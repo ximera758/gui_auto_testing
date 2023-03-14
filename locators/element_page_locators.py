@@ -15,54 +15,55 @@ class TextBoxPageLocators:
 
 
 class CheckBoxPageLocators:
-
-    EXPAND_ALL_BUTTON = (By.CSS_SELECTOR,"button[title ='Expand all']")
-    ITEM_LIST = (By.CSS_SELECTOR,"span[class='rct-title']")
-    CHECKED_ITEMS = (By.CSS_SELECTOR,"svg[class='rct-icon rct-icon-check']")
+    EXPAND_ALL_BUTTON = (By.CSS_SELECTOR, "button[title ='Expand all']")
+    ITEM_LIST = (By.CSS_SELECTOR, "span[class='rct-title']")
+    CHECKED_ITEMS = (By.CSS_SELECTOR, "svg[class='rct-icon rct-icon-check']")
     TITLE_ITEM = ".//ancestor::span[@class='rct-text']"
     OUTPUT_RESULT = (By.CSS_SELECTOR, "span[class='text-success']")
 
+
 class RadioButtonPageLocators:
     YES_RADIO_BUTTON = (By.CSS_SELECTOR, "label[class^='custom-control'][for='yesRadio']")
-    IMPRESSIVE_RADIO_BUTTON= (By.CSS_SELECTOR, "label[class^='custom-control'][for='impressiveRadio']")
+    IMPRESSIVE_RADIO_BUTTON = (By.CSS_SELECTOR, "label[class^='custom-control'][for='impressiveRadio']")
     NO_RADIO_BUTTON = (By.CSS_SELECTOR, "label[class^='custom-control'][for='noRadio']")
     OUTPUT_RESULT = (By.CSS_SELECTOR, "p span[class='text-success']")
 
 
 class WebTablePageLocators:
-    #add person form
-    ADD_BUTTON = (By.CSS_SELECTOR,"button[id='addNewRecordButton']")
+    # add person form
+    ADD_BUTTON = (By.CSS_SELECTOR, "button[id='addNewRecordButton']")
     FIRST_NAME_INPUT = (By.CSS_SELECTOR, "input[placeholder='First Name']")
     LAST_NAME_INPUT = (By.CSS_SELECTOR, "input[placeholder='Last Name']")
     EMAIL_INPUT = (By.CSS_SELECTOR, "input[placeholder='name@example.com']")
     AGE_INPUT = (By.CSS_SELECTOR, "input[placeholder='Age']")
     SALARY_INPUT = (By.CSS_SELECTOR, "input[placeholder='Salary']")
     DEPARTMENT_INPUT = (By.CSS_SELECTOR, "input[placeholder='Department']")
-    SUBMIT = (By.CSS_SELECTOR,"button[id='submit']")
+    SUBMIT = (By.CSS_SELECTOR, "button[id='submit']")
 
-
-    #tabel
-    FULL_PEOPLE_LIST = (By.CSS_SELECTOR,"div[class='rt-tr-group']")
-    SEARCH_INPUT = (By.CSS_SELECTOR,'input[id="searchBox"]')
-    DELETE_BUTTON = (By.CSS_SELECTOR,'span[title=Delete]')
+    # tabel
+    FULL_PEOPLE_LIST = (By.CSS_SELECTOR, "div[class='rt-tr-group']")
+    SEARCH_INPUT = (By.CSS_SELECTOR, 'input[id="searchBox"]')
+    DELETE_BUTTON = (By.CSS_SELECTOR, 'span[title=Delete]')
     ROW_PARENT = ".//ancestor::div[@class='rt-tr-group']"
-    NO_ROWS_FOUND = (By.CSS_SELECTOR,"div[class='rt-noData']")
-    COUNT_ROW_LIST = (By.CSS_SELECTOR,"select[aria-lable='rows per page']")
+    NO_ROWS_FOUND = (By.CSS_SELECTOR, "div[class='rt-noData']")
+    COUNT_ROW_LIST = (By.CSS_SELECTOR, "select[aria-lable='rows per page']")
     # update
-    UPDATE_BUTTON = (By.CSS_SELECTOR,"span[title = 'Edit']")
+    UPDATE_BUTTON = (By.CSS_SELECTOR, "span[title = 'Edit']")
 
 
 class ButtonsPageLocators:
+    DOUBLE_BUTTON = (By.CSS_SELECTOR, "button[id='doubleClickBtn']")
+    RIGHT_CLICK_BUTTON = (By.CSS_SELECTOR, "button[id='rightClickBtn']")
+    CLICK_ME_BUTTON = (By.XPATH, "//div[3]/button")
 
-     DOUBLE_BUTTON =(By.CSS_SELECTOR,"button[id='doubleClickBtn']")
-     RIGHT_CLICK_BUTTON =(By.CSS_SELECTOR,"button[id='rightClickBtn']")
-     CLICK_ME_BUTTON =(By.XPATH,"//div[3]/button")
+    # result
+    SUCCESS_DOUBLE = (By.CSS_SELECTOR, 'p[id="doubleClickMessage"]')
+    SUCCESS_RIGHT = (By.CSS_SELECTOR, 'p[id="rightClickMessage"]')
+    SUCCESS_CLICK_ME = (By.CSS_SELECTOR, 'p[id="dynamicClickMessage"]')
 
-     #result
-     SUCCESS_DOUBLE =(By.CSS_SELECTOR,'p[id="doubleClickMessage"]')
-     SUCCESS_RIGHT =(By.CSS_SELECTOR,'p[id="rightClickMessage"]')
-     SUCCESS_CLICK_ME = (By.CSS_SELECTOR,'p[id="dynamicClickMessage"]')
 
 class LinksPageLocators:
-      SIMPLE_LINK =(By.CSS_SELECTOR,'a[id="simpleLink"]')
-      BAD_REQUEST =(By.CSS_SELECTOR,'a[id="bad-request"')
+    SIMPLE_LINK = (By.CSS_SELECTOR, 'a[id="simpleLink"]')
+    BAD_REQUEST = (By.CSS_SELECTOR, 'a[id="bad-request"')
+    DYNAMIC_LINK = (By.CSS_SELECTOR, 'a[id="dynamicLink"]')
+    INVALID_URL = (By.CSS_SELECTOR, 'a[id="invalid-url"')
