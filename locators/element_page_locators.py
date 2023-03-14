@@ -67,3 +67,9 @@ class LinksPageLocators:
     BAD_REQUEST = (By.CSS_SELECTOR, 'a[id="bad-request"')
     DYNAMIC_LINK = (By.CSS_SELECTOR, 'a[id="dynamicLink"]')
     INVALID_URL = (By.CSS_SELECTOR, 'a[id="invalid-url"')
+
+class UploadAndDownloadPageLocators:
+   UPLOAD_FILE = (By.CSS_SELECTOR,'input[id="uploadFile"]')
+   UPLOADED_RESULT = (By.CSS_SELECTOR,'p[id="uploadedFilePath"]')
+
+   DOWNLOAD_FILE = (By.CSS_SELECTOR,'a[id="downloadButton"]')
