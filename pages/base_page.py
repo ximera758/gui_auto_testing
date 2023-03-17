@@ -26,7 +26,7 @@ class BasePage:
     def element_is_not_visible(self, locator, timeout=5):
         return wait(self.driver, timeout).until(EC.invisibility_of_element_located(locator))
 
-    def element_is_clikable(self, locator, timeout=5):
+    def element_is_clickable(self, locator, timeout=5):
         return wait(self.driver, timeout).until(EC.element_to_be_clickable(locator))
 
     def go_to_element(self, element):
@@ -47,3 +47,9 @@ class BasePage:
 
     def go_to_window(self):
         self.driver.switch_to.window(self.driver.window_handles[1])
+
+    def remove_footer(self):
+        self.driver.execute_script("document.getElementById('adplus-anchor').remove();")
+        self.driver.execute_script("document.getElementsByTagName('footer')[0].remove();")
+        self.driver.execute_script("document.getElementById('close-fixedban').remove();")
+

@@ -28,7 +28,7 @@ class TextBoxPage(BasePage):
         self.element_is_visible(self.locators.EMAIL).send_keys(email)
         self.element_is_visible(self.locators.CURRENT_ADDRESS).send_keys(current_address)
         self.element_is_visible(self.locators.PERMANENT_ADDRESS).send_keys(permanent_address)
-        self.go_to_element(self.locators.SUBMIT)
+        self.go_to_element(self.element_is_visible(self.locators.SUBMIT))
         self.element_is_visible(self.locators.SUBMIT).click()
         return full_name, email, current_address, permanent_address
 
@@ -226,13 +226,13 @@ class UploadAndDownloadPage(BasePage):
         self.element_is_present(self.locators.UPLOAD_FILE).send_keys(path)
         os.remove(path)
         text = self.element_is_present(self.locators.UPLOADED_RESULT).text
-        return file_name.split('\\')[-1],text.split('\\')[-1]
+        return file_name.split('\\')[-1], text.split('\\')[-1]
 
     def download_file(self):
         link = self.element_is_present(self.locators.DOWNLOAD_FILE).get_attribute('href')
         link_b = base64.b64decode(link)
-        path_name_file = rf'D:\filetest{random.randint(0,999)}.jpg'
-        with open(path_name_file,'wb+') as f:
+        path_name_file = rf'D:\filetest{random.randint(0, 999)}.jpg'
+        with open(path_name_file, 'wb+') as f:
             offset = link_b.find(b'\xff\xb8')
             f.write(link_b[offset:])
             check_file = os.path.exists(path_name_file)
@@ -240,22 +240,23 @@ class UploadAndDownloadPage(BasePage):
         os.remove(path_name_file)
         return check_file
 
+
 class DynamicPropertiesPage(BasePage):
-    locators =DynamicPropertiesPageLocators
+    locators = DynamicPropertiesPageLocators
 
     def check_enable_button(self):
         try:
-            self.element_is_clikable(self.locators.ENABLE_BUTTON)
+            self.element_is_clickable(self.locators.ENABLE_BUTTON)
         except TimeoutException:
             return False
         return True
 
-    def check_changet_of_color(self):
-       color_button = self.element_is_present(self.locators.COLOR_CHANGE_BUTTON)
-       color_button_before = color_button.value_of_css_property('color')
-       time.sleep(5)
-       color_button_after = color_button.value_of_css_property('color')
-       return color_button_before,color_button_after
+    def check_change_of_color(self):
+        color_button = self.element_is_present(self.locators.COLOR_CHANGE_BUTTON)
+        color_button_before = color_button.value_of_css_property('color')
+        time.sleep(5)
+        color_button_after = color_button.value_of_css_property('color')
+        return color_button_before, color_button_after
 
     def check_appear_of_button(self):
         try:
@@ -263,3 +264,5 @@ class DynamicPropertiesPage(BasePage):
         except TimeoutException:
             return False
         return True
+
+

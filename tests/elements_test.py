@@ -15,7 +15,7 @@ class TestElements:
             assert full_name == output_name, "the full name does not match"
             assert email == output_email, "the email does not match"
             assert current_address == output_cur_add, "the current_address does not match"
-            assert permanent_address == output_per_add, "the permnent_address does not match"
+            assert permanent_address == output_per_add, "the permanent_address does not match"
 
     class TestCheckBox:
 
@@ -151,7 +151,7 @@ class TestElements:
         def test_dynamic_properties(self,driver):
             dynamic_properties_page = DynamicPropertiesPage(driver, 'https://demoqa.com/dynamic-properties')
             dynamic_properties_page.open()
-            color_before,color_after = dynamic_properties_page.check_changet_of_color()
+            color_before,color_after = dynamic_properties_page.check_change_of_color()
             assert  color_before != color_after,'colors have not been changet'
 
         def test_appear_of_button(self,driver):
