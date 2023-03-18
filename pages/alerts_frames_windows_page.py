@@ -1,6 +1,6 @@
 from selenium.common import UnexpectedAlertPresentException
 
-from locators.alerts_frames_windows_locators import BrowserWindowsPageLocators, AlertsPageLocators
+from locators.alerts_frames_windows_locators import BrowserWindowsPageLocators, AlertsPageLocators, FramesPageLocators
 from pages.base_page import BasePage
 import random
 import time
@@ -20,6 +20,7 @@ class BrowserWindowsPage(BasePage):
         self.driver.switch_to.window(self.driver.window_handles[1])
         text_title = self.element_is_present(self.locators.TITLE_NEW).text
         return text_title
+
 
 class AlertsPage(BasePage):
     locators = AlertsPageLocators()
@@ -48,16 +49,33 @@ class AlertsPage(BasePage):
 
     def check_prompt_alert(self):
         self.remove_footer()
-        text = f'autotest{random.randint(0,999)}'
+        text = f'autotest{random.randint(0, 999)}'
         self.element_is_visible(self.locators.PROMPT_BOX_ALERT_BUTTON).click()
         alert_window = self.driver.switch_to.alert
         alert_window.send_keys(text)
         alert_window.accept()
         text_result = self.element_is_present(self.locators.PROMPT_RESULT).text
-        return text,text_result
+        return text, text_result
 
 
+class FramesPage(BasePage):
+    locators = FramesPageLocators()
 
+    def check_frame(self,frame_num):
+        if frame_num == 'frame1':
+            frame = self.element_is_present(self.locators.FIRST_NAME)
+            width = frame.get_attribute('width')
+            height = frame.get_attribute('height')
+            self.driver.switch_to.frame(frame)
+            text = self.element_is_present(self.locators.TITLE_FRAME).text
+            self.driver.switch_to.default_content()
+            return [text,width,height]
 
-
-
+        if frame_num == 'frame2':
+            frame = self.element_is_present(self.locators.SECOND_NAME)
+            width = frame.get_attribute('width')
+            height = frame.get_attribute('height')
+            self.driver.switch_to.frame(frame)
+            text = self.element_is_present(self.locators.TITLE_FRAME).text
+            self.driver.switch_to.default_content()
+            return [text,width,height]
