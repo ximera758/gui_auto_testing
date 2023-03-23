@@ -1,6 +1,6 @@
 from selenium.common import TimeoutException
 
-from locators.widget_locators import AccordianPageLocators
+from locators.widgets_locators import AccordianPageLocators
 from pages.base_page import BasePage
 
 

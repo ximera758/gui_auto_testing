@@ -1,6 +1,6 @@
 import time
 
-from pages.widgetes_page import AccordianPage
+from pages.widgets_page import AccordianPage
 
 
 class TestWidgets:
@@ -13,7 +13,5 @@ class TestWidgets:
             # second_title, second_content = accordian_page.check_accordian('second')
             third_title, third_content = accordian_page.check_accordian('third')
             assert first_title == 'What is Lorem Ipsum?' and first_content > 0
-            time.sleep(2)
             # assert second_title == 'Where does it come from?' and second_content > 0
-            time.sleep(2)
             assert third_title == 'Why do we use it?' and third_content > 0
