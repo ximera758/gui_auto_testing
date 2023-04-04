@@ -45,6 +45,12 @@ class BasePage:
         action.context_click(element)
         action.perform()
 
+    def action_drag_and_drop_by_offset(self,element,x_cords,y_cords):
+        action = ActionChains(self.driver)
+        action.drag_and_drop_by_offset(element,x_cords,y_cords)
+        action.perform()
+
+
     def go_to_window(self):
         self.driver.switch_to.window(self.driver.window_handles[1])
 
