@@ -1,6 +1,6 @@
 import time
 
-from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage
+from pages.widgets_page import AccordianPage, AutoCompletePage, DatePickerPage, SliderPage, ProgressBarPage, TabsPage
 
 
 class TestWidgets:
@@ -56,16 +56,31 @@ class TestDataPickerPage:
 
 
 class TestSliderPage:
-    def test_slider(self,driver):
-        slider = SliderPage(driver,'https://demoqa.com/slider')
+    def test_slider(self, driver):
+        slider = SliderPage(driver, 'https://demoqa.com/slider')
         slider.open()
-        before,after = slider.change_slider_value()
-        assert before != after,'the slider value has not been change'
+        before, after = slider.change_slider_value()
+        assert before != after, 'the slider value has not been change'
 
 
 class TestProgressBarPage:
-    def test_progress_bar(self,driver):
-        progress_bar = ProgressBarPage(driver,'https://demoqa.com/progress-bar')
+    def test_progress_bar(self, driver):
+        progress_bar = ProgressBarPage(driver, 'https://demoqa.com/progress-bar')
         progress_bar.open()
-        before,after = progress_bar.change_progress_bar_value()
-        assert   before != after, 'the progress bar value has not been change'
+        before, after = progress_bar.change_progress_bar_value()
+        assert before != after, 'the progress bar value has not been change'
+
+
+class TestTablePage:
+
+    def test_table(self, driver):
+        tabs = TabsPage(driver, 'https://demoqa.com/tabs')
+        tabs.open()
+        what_button, what_content = tabs.check_tabs('what')
+        origin_button, origin_content = tabs.check_tabs('origin')
+        use_button, use_content = tabs.check_tabs('use')
+        # more_button, more_content = tabs.check_tabs('more')
+        assert what_button == 'What' and what_content != 0, 'the tab"what"was not pressed or not text is missing'
+        assert origin_button == 'Origin' and origin_content != 0, 'the tab"origin"was not pressed or not text is missing'
+        assert use_button == 'Use' and use_content != 0, 'the tab"use"was not pressed or not text is missing'
+        # assert more_button == 'More' and more_content != 0, 'the tab"more"was not pressed or not text is missing'
