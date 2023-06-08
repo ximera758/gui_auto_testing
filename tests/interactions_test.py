@@ -19,6 +19,6 @@ class TestInteraction:
             selectable_page.open()
             item_list = selectable_page.select_list_item()
             item_grid = selectable_page.select_grid_item()
-            assert len(item_list) > 0, "no elements were selected"
+            assert len(item_list) > 0, 'no elements were selected'
             assert len(item_grid) > 0, "no elements were selected"
 
