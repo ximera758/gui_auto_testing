@@ -1,9 +1,13 @@
 from pages.interactions_page import SortablePage, SelectablePage, ResizablePage, DropPage, DraggablePage
+import allure
 
-
+@allure.suite("Interaction")
 class TestInteraction:
+
+    @allure.feature('Check sortable page')
     class TestSortablePage:
 
+        @allure.title('Check test sortable')
         def test_sortable(self, driver):
             sortable_page = SortablePage(driver, 'https://demoqa.com/sortable')
             sortable_page.open()
@@ -12,7 +16,10 @@ class TestInteraction:
             assert list_before != list_after
             assert grid_before != grid_after
 
+    @allure.feature('Check select page')
     class TestSelectPage:
+
+        @allure.title('Check select page')
         def test_selectable(self, driver):
             selectable_page = SelectablePage(driver, 'https://demoqa.com/selectable')
             selectable_page.open()
@@ -21,8 +28,10 @@ class TestInteraction:
             assert len(item_list) > 0, 'no elements were selected'
             assert len(item_grid) > 0, "no elements were selected"
 
+    @allure.feature('Check resizable page')
     class TestResizablePage:
 
+        @allure.title('Check resizable page')
         def test_resizable_page(self, driver):
             resizable_page = ResizablePage(driver, 'https://demoqa.com/resizable')
             resizable_page.open()
@@ -32,14 +41,17 @@ class TestInteraction:
             assert ('150px', '150px') == min_box, "maximum size not equal to 150px"
             assert min_resize != max_resize, "resizable has not been changed"
 
+    @allure.feature('Check droppable page')
     class TestDroppablePage:
 
+        @allure.title('Check simple dropable')
         def test_simple_droppable(self, driver):
             droppable_page = DropPage(driver, 'https://demoqa.com/droppable')
             droppable_page.open()
             text = droppable_page.drop_simple()
             assert text == 'Dropped!', 'the element has not been dropped'
 
+        @allure.title('Check accept droppable')
         def test_accept_droppable(self, driver):
             droppable_page = DropPage(driver, 'https://demoqa.com/droppable')
             droppable_page.open()
@@ -47,6 +59,7 @@ class TestInteraction:
             assert not_accept == 'Drop here!', 'the dropped element has not been dropped'
             assert accept == 'Dropped!', "the dropped element has not been dropped "
 
+        @allure.title('Check prevent propogation droppable')
         def test_prevent_propogation_droppbale(self, driver):
             droppable_page = DropPage(driver, 'https://demoqa.com/droppable')
             droppable_page.open()
@@ -56,6 +69,7 @@ class TestInteraction:
             assert greedy == 'Outer droppable!', "the dropped element has not been dropped "
             assert greedy_inner == 'Dropped!', "the dropped element has not been dropped "
 
+        @allure.title('Check revert draggable droppable')
         def test_revert_draggable_droppable(self, driver):
             droppable_page = DropPage(driver, 'https://demoqa.com/droppable')
             droppable_page.open()
@@ -64,14 +78,17 @@ class TestInteraction:
             assert will_after_move != will_after_revert, 'the elements has not revert'
             assert not_will_after_move == not_will_after_revert, 'the elements has not revert'
 
+    @allure.feature('Check droppable page')
     class TestDraggablePage:
 
+        @allure.title('Check simple draggable')
         def test_simple_draggable(self, driver):
             draggable_page = DraggablePage(driver, 'https://demoqa.com/dragabble')
             draggable_page.open()
             before, after = draggable_page.simple_drag_box()
             assert before != after, "the position of has not been changet"
 
+        @allure.title('Check axis restricted draggable')
         def test_axis_restricted_draggable(self, driver):
             draggable_page = DraggablePage(driver, 'https://demoqa.com/dragabble')
             draggable_page.open()
